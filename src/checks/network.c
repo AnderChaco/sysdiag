@@ -1,8 +1,10 @@
+#include <netinet/in.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <sys/socket.h>
 #include <sys/stat.h>
 #include <ifaddrs.h>
 #include <arpa/inet.h>
@@ -53,7 +55,32 @@ static int get_ip_address(const char *iface, char *ip, size_t size) {
     }
     fclose(f);
     return 0;
-} 
+}
+
+//Obtain IP using getifaddrs()
+//
+static void get_ipv4(const char *iface, char *ip, size_t size) {
+    struct ifaddrs *ifaddr, *ifa;
+
+    if (getifaddrs(&ifaddr) == -1) {
+        snprintf(ip, size, "Unknown");
+        return;
+    }
+
+    for (ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {
+        if (!ifa->ifa_addr) continue;
+
+        if (ifa->ifa_addr->sa_family == AF_INET && strcmp(ifa->ifa_name, iface) == 0) {
+            struct sockaddr_in *sa = (struct sockaddr_in *)ifa->ifa_addr;
+            inet_ntop(AF_INET, &(sa->sin_addr), ip, size);
+            freeifaddrs(ifaddr);
+            return;
+        }
+    }
+
+    freeifaddrs(ifaddr);
+    snprintf(ip, size, "Unknown");
+}
 
 check_status check_network(char *msg, size_t msg_size) {
     DIR *d = opendir("/sys/class/net");
@@ -91,7 +118,7 @@ check_status check_network(char *msg, size_t msg_size) {
     //get the network speed
     //
     snprintf(path, sizeof(path), "/sys/class/net/%s/speed", iface);
-    char speed[64] = "Unknown";
+    char speed[64] = "N/A (Wireless Interface)";
     
     if (read_file(path, buf, sizeof(buf))) {
         snprintf(speed, sizeof(speed), "%s Mb/s", buf);
@@ -100,7 +127,7 @@ check_status check_network(char *msg, size_t msg_size) {
     //get the ip address...
     //
     char ip[64] = "Unknown";
-    get_ip_address(iface, ip, sizeof(ip));
+    get_ipv4(iface, ip, sizeof(ip));
 
     //get traffic stats
     //
