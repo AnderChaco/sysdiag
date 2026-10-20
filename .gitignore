@@ -38,3 +38,5 @@ venv/
 
 # Other files...
 .cache/
+.github/
+/docs/*

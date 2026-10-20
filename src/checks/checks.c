@@ -7,9 +7,8 @@
 // Each entry: { "Visible name", function_check } 
 check_t checks[] = { 
     { "Available Memory", check_memory }, 
-    { "CPU Status", check_cpu }, 
-    { "Disk Space", check_disk }, 
-    // { "Network Status", check_network }
+    { "CPU Status", check_cpu }, { "Disk Space", check_disk }, 
+    { "Network Status", check_network },
     { NULL, NULL } // Array ended 
 };
 
