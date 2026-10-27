@@ -1,5 +1,7 @@
 SysDiag
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Lightweight, modular, visually‑consistent system diagnostics tool for Linux.
 
 SysDiag provides a clean, unified way to inspect system health using a modular architecture.
@@ -81,7 +83,7 @@ SysDiag uses ANSI colors and symbols:
     White values
 
 Example:
-Código
+
 
 ✓ OK CPU Status
   Model:          Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
@@ -122,7 +124,7 @@ bash
 ./sysdiag
 
  - Example Output
-Código
+
 
 SysDiag — System Diagnostic Tool
 --------------------------------------
@@ -176,4 +178,5 @@ Explore next steps:
 
  -  License
 
-MIT License??? We will see it.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+

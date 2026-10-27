@@ -1,3 +1,5 @@
+/* SPDX-License-Identifier: MIT */
+
 #include <netinet/in.h>
 #include <stddef.h>
 #include <stdio.h>

@@ -1,3 +1,5 @@
+/* SPDX-License-Identifier: MIT */
+
 //Referenced from https://stackoverflow.com/questions/3585846/color-text-in-terminal-applications-in-unix
 //https://github.com/github-copilot/code_referencing?cursor=1beb9502e81858efeaf411e0c99131a3&editor=vscode
 
