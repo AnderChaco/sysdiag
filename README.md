@@ -89,12 +89,13 @@ SysDiag uses ANSI colors and symbols:
 
 Example:
 
-
+```text
 ✓ OK CPU Status
   Model:          Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
   Cores:          6
   Frequency:      2.60 GHz
   Load (1m):      0.42
+```
 
 -  Modules
 
@@ -115,22 +116,25 @@ Network
 Reads /sys/class/net, /proc/net/dev, and /proc/net/fib_trie to report interface, IP, speed, RX/TX bytes.
 
  - Installation
-Build
-bash
 
+Build:
+
+```bash
 mkdir build
 cd build
 cmake ..
 make
+```
 
-Run
-bash
+Run:
 
+```bash
 ./sysdiag
+```
 
  - Example Output
 
-
+```text
 SysDiag — System Diagnostic Tool
 --------------------------------------
 
@@ -156,6 +160,7 @@ SysDiag — System Diagnostic Tool
   Speed:          1000 Mb/s
   RX Bytes:       123456789
   TX Bytes:       987654321
+```
 
 - Roadmap
 
