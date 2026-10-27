@@ -27,20 +27,25 @@ Each diagnostic module returns structured text, and the main runner handles all 
 
  - Project Structure
 
-src/
- ├── main.c
- ├── checks/
- │    ├── checks.c
- │    ├── checks.h
- │    ├── memory.c
- │    ├── cpu.c
- │    ├── disk.c
- │    └── network.c
- └── utils/
-      ├── style.c
-      └── style.h
-docs/
- └── SysDiag_Design.md
+```text
+├── include/
+│   ├── checks.h
+│   ├── colors.h
+│   ├── style.h
+│   └── version.h.in
+├── src/
+│   ├── main.c
+│   ├── checks/
+│   │   ├── checks.c
+│   │   ├── cpu.c
+│   │   ├── disk.c
+│   │   ├── memory.c
+│   │   └── network.c
+│   └── utils/
+│       └── style.c
+└── docs/
+    └── sysdiag_design.md
+```
 
  - Architecture
 
